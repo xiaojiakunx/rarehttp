@@ -22,7 +22,7 @@ public class Main {
         headers.add("charset", "UTF8");
 
         // 创建请求体
-        String dataStr = "{\"id\": \"12\", \"name\": \"杨天翔\", \"yearold\": 18, \"opcode\": \"10140814\"}";
+        String dataStr = "{\"id\": \"16\", \"name\": \"杨天翔\", \"yearold\": 18, \"opcode\": \"10140814\"}";
         byte[] dataBytes = dataStr.getBytes(Charset.forName("UTF8"));
 
         // 创建HttpEntity，包含请求头和请求体
