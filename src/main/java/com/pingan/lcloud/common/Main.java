@@ -14,19 +14,20 @@ public class Main {
     public static void main(String[] args) {
 
         // 修正URL，移除末尾的单引号
-        String url = "http://192.168.1.209:1014/rare/word";
+        String url = "http://172.20.10.2:1014/rare/word";
         RestTemplate restTemplate = new RestTemplate();
         // 创建请求头
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("charset", "UTF8");
+        // 只需要设置头信息 content-Type charset=UTF8/GBK
+        headers.add("Content-Type", "application/json; charset=UTF8");
 
         // 创建请求体
-        String dataStr = "{\"id\": \"16\", \"name\": \"杨天翔\", \"yearold\": 18, \"opcode\": \"10140814\"}";
+        String dataStr = "{\"id\": \"36\", \"name\": \"杨天翔\", \"yearold\": 18, \"opcode\": \"10140814\"}";
         byte[] dataBytes = dataStr.getBytes(Charset.forName("UTF8"));
 
         // 创建HttpEntity，包含请求头和请求体
-        HttpEntity<byte[]> requestEntity = new HttpEntity<>(dataBytes, headers);
+//        HttpEntity<byte[]> requestEntity = new HttpEntity<>(dataBytes, headers);
+        HttpEntity<String> requestEntity =new HttpEntity<>(dataStr, headers);
 
         // 发送POST请求并接收响应
         ResponseEntity<String> response = restTemplate.exchange(
